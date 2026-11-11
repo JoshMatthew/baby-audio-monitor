@@ -1,0 +1,113 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1115;
+  --panel: #1a1d23;
+  --border: #2c313a;
+  --text: #e8e6e3;
+  --muted: #9aa0a6;
+  --live: #7cc4a4;
+  --warn: #e0b45a;
+  --error: #e07a6e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+  font:
+    16px/1.5 system-ui,
+    sans-serif;
+}
+
+main {
+  width: min(100%, 360px);
+  display: grid;
+  gap: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#status {
+  margin: 0;
+  color: var(--muted);
+}
+
+#status[data-state="live"] {
+  color: var(--live);
+}
+
+#status[data-state="offline"],
+#status[data-state="reconnecting"] {
+  color: var(--warn);
+}
+
+#status[data-state="wrong-password"] {
+  color: var(--error);
+}
+
+.meter {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+#level {
+  height: 100%;
+  background: var(--live);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 100ms linear;
+}
+
+form,
+#controls {
+  display: grid;
+  gap: 12px;
+}
+
+input[type="password"] {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: inherit;
+  font: inherit;
+}
+
+input[type="range"] {
+  accent-color: var(--live);
+}
+
+button {
+  padding: 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--live);
+  color: var(--bg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#stop {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+}
